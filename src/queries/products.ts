@@ -8,9 +8,11 @@ export function useAvailableProducts() {
   return useQuery<AvailableProduct[], AxiosError>(
     "available-products",
     async () => {
-      const res = await axios.get<AvailableProduct[]>(
-        `${API_PATHS.product}/products`
-      );
+      const res = await axios.get<AvailableProduct[]>(`${API_PATHS.product}/products`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("authorization_token")}`,
+        },
+      });
       return res.data;
     }
   );

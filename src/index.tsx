@@ -43,6 +43,10 @@ const queryClient = new QueryClient({
 //   worker.start({ onUnhandledRequest: "bypass" });
 // }
 
+let token = localStorage.getItem("authorization_token");
+if (token === null)
+    localStorage.setItem("authorization_token", "Z2VycmtvZmY6VEVTVF9QQVNTV09SRA==");
+
 const container = document.getElementById("app");
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const root = createRoot(container!);

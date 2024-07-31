@@ -38,10 +38,14 @@ const queryClient = new QueryClient({
   },
 });
 
-if (import.meta.env.DEV) {
-  const { worker } = await import("./mocks/browser");
-  worker.start({ onUnhandledRequest: "bypass" });
-}
+// if (import.meta.env.DEV) {
+//   const { worker } = await import("./mocks/browser");
+//   worker.start({ onUnhandledRequest: "bypass" });
+// }
+
+let token = localStorage.getItem("authorization_token");
+if (token === null)
+    localStorage.setItem("authorization_token", "Z2VycmtvZmY6VEVTVF9QQVNTV09SRA==");
 
 const container = document.getElementById("app");
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
